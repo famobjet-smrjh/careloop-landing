@@ -233,6 +233,30 @@
 
     /* ── PRICING ── */
     .pricing-section { background: var(--gray-50); }
+    .promo-banner {
+      background: linear-gradient(90deg, #FFB703, #FB8500);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin-bottom: 48px;
+      font-weight: 700; font-size: 15px;
+      flex-wrap: wrap; text-align: center;
+    }
+    .promo-banner .promo-badge {
+      background: rgba(255,255,255,0.25);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 12px; font-weight: 900;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .promo-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--gray-500);
+    }
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -524,48 +548,56 @@
 <!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="container">
-    <p class="section-label">요금제</p>
-    <h2 class="section-title">부담 없는 가격으로 시작하세요</h2>
-    <p class="section-sub">언제든 해지 가능. 위약금 없음.</p>
+    <p class="section-label">얼리버드 이벤트 — 100명 한정</p>
+    <h2 class="section-title">부모님 두 분이 한 번에</h2>
+    <p class="section-sub">각자 전용 봇으로 개별 카카오 케어. 언제든 해지 가능.</p>
 
     <div class="pricing-grid">
-      <!-- BASIC -->
-      <div class="plan-card">
-        <p class="plan-name">베이직</p>
+      <!-- EARLY BIRD -->
+      <div class="plan-card featured">
+        <div class="plan-badge">🎉 얼리버드</div>
+        <p class="plan-name">베이직 — 두 분 포함</p>
+        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">19,800원 / 월</p>
         <p class="plan-price">9,900<span>원 / 월</span></p>
+        <p style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:16px;">50% 할인 · 100명 한정</p>
         <hr class="plan-divider" />
         <ul class="plan-features">
+          <li><span class="check">✓</span> 부모님 <strong>두 분 전용 봇</strong> 각각 제공</li>
           <li><span class="check">✓</span> 매일 건강 체크인</li>
-          <li><span class="check">✓</span> 복약 알림</li>
+          <li><span class="check">✓</span> 약봉투 사진 → 복약 자동 등록</li>
           <li><span class="check">✓</span> 맞춤 건강 팁</li>
           <li><span class="check">✓</span> 자녀 주간 리포트</li>
           <li><span class="cross">✕</span> 체크인 미응답 알림</li>
-          <li><span class="cross">✕</span> 컨디션 대시보드</li>
         </ul>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiw47IaI0w1ru6liRHPsjtOjKPLcXfKlsd5BUlNQRwd2irCQ/viewform" target="_blank">
-          <button class="plan-cta plan-cta-outline">베이직으로 시작</button>
+          <button class="plan-cta plan-cta-fill">얼리버드로 시작하기</button>
         </a>
       </div>
 
       <!-- PREMIUM -->
-      <div class="plan-card featured">
-        <div class="plan-badge">추천</div>
-        <p class="plan-name">프리미엄</p>
+      <div class="plan-card">
+        <p class="plan-name">프리미엄 — 두 분 포함</p>
+        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">29,800원 / 월</p>
         <p class="plan-price">14,900<span>원 / 월</span></p>
+        <p style="font-size:13px;color:var(--gray-500);font-weight:700;margin-bottom:16px;">50% 할인 · 100명 한정</p>
         <hr class="plan-divider" />
         <ul class="plan-features">
+          <li><span class="check">✓</span> 부모님 <strong>두 분 전용 봇</strong> 각각 제공</li>
           <li><span class="check">✓</span> 매일 건강 체크인</li>
-          <li><span class="check">✓</span> 복약 알림</li>
+          <li><span class="check">✓</span> 약봉투 사진 → 복약 자동 등록</li>
           <li><span class="check">✓</span> 맞춤 건강 팁</li>
           <li><span class="check">✓</span> 자녀 주간 리포트</li>
           <li><span class="check">✓</span> <strong>체크인 미응답 알림</strong></li>
-          <li><span class="check">✓</span> <strong>컨디션 대시보드</strong></li>
         </ul>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiw47IaI0w1ru6liRHPsjtOjKPLcXfKlsd5BUlNQRwd2irCQ/viewform" target="_blank">
-          <button class="plan-cta plan-cta-fill">프리미엄으로 시작</button>
+          <button class="plan-cta plan-cta-outline">프리미엄 신청</button>
         </a>
       </div>
     </div>
+
+    <p class="promo-note">
+      얼리버드 종료 후 정상가 — 한 분 9,900원 / 두 분 15,900원 / 프리미엄 두 분 24,900원
+    </p>
   </div>
 </section>
 
