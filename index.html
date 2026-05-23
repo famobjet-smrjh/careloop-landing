@@ -202,6 +202,35 @@
       line-height: 1.9;
     }
 
+    /* ── PHOTO FEATURE ── */
+    .photo-feature { background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%); color: #fff; text-align: center; }
+    .photo-feature .section-label { color: var(--green); }
+    .photo-feature .section-title { color: #fff; }
+    .photo-feature .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto; }
+    .photo-flow {
+      display: flex; align-items: flex-start; justify-content: center;
+      gap: 12px; margin-top: 56px; flex-wrap: wrap;
+    }
+    .photo-step {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 28px 20px;
+      text-align: center; flex: 1; min-width: 140px; max-width: 190px;
+    }
+    .photo-step-icon { font-size: 38px; margin-bottom: 12px; }
+    .photo-step-label { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .photo-step-sub { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .photo-arrow { font-size: 22px; color: var(--green); font-weight: 900; align-self: center; padding-top: 4px; }
+    .photo-sample-box {
+      background: rgba(6,214,160,0.08);
+      border: 1px solid rgba(6,214,160,0.25);
+      border-radius: 16px; padding: 20px 28px;
+      margin: 40px auto 0;
+      font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8;
+      max-width: 580px;
+    }
+    .photo-sample-box strong { color: var(--green); }
+
     /* ── PRICING ── */
     .pricing-section { background: var(--gray-50); }
     .pricing-grid {
@@ -420,12 +449,12 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>자녀가 설정</h3>
-        <p>부모님 이름, 건강 상태, 드시는 약을 입력해요</p>
+        <h3>자녀가 5분 설정</h3>
+        <p>이름·건강 상태만 입력하면 끝. 약은 부모님이 사진으로!</p>
         <div class="step-detail">
-          ✅ 이름 & 생년월일<br />
-          ✅ 복용 중인 약<br />
-          ✅ 건강 관심사 (혈압, 당뇨 등)
+          ✅ 이름 & 건강 관심사<br />
+          📷 약봉투 사진 → AI 자동 등록<br />
+          ✅ 타이핑 일절 없음
         </div>
       </div>
       <div class="step">
@@ -448,6 +477,46 @@
           📌 저녁: 오늘의 건강 팁
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO FEATURE -->
+<section class="photo-feature">
+  <div class="container">
+    <p class="section-label">스마트 복약 등록</p>
+    <h2 class="section-title">약봉투·처방전 사진 한 장이면 끝</h2>
+    <p class="section-sub">타이핑 필요 없어요. 사진만 찍어 보내시면<br />AI가 읽고 복약 일정을 자동으로 등록해드려요.</p>
+
+    <div class="photo-flow">
+      <div class="photo-step">
+        <div class="photo-step-icon">📷</div>
+        <div class="photo-step-label">사진 찍기</div>
+        <div class="photo-step-sub">약봉투 또는 처방전 그대로</div>
+      </div>
+      <div class="photo-arrow">→</div>
+      <div class="photo-step">
+        <div class="photo-step-icon">🤖</div>
+        <div class="photo-step-label">AI가 읽어요</div>
+        <div class="photo-step-sub">약 이름·용량·복용 시간 자동 인식</div>
+      </div>
+      <div class="photo-arrow">→</div>
+      <div class="photo-step">
+        <div class="photo-step-icon">💊</div>
+        <div class="photo-step-label">자동 등록</div>
+        <div class="photo-step-sub">복약 일정 + 주의사항 세팅 완료</div>
+      </div>
+      <div class="photo-arrow">→</div>
+      <div class="photo-step">
+        <div class="photo-step-icon">💡</div>
+        <div class="photo-step-label">건강 팁까지</div>
+        <div class="photo-step-sub">그 약·질환에 맞는 유익 정보 제공</div>
+      </div>
+    </div>
+
+    <div class="photo-sample-box">
+      AI 봇 실제 응답 예시 → <strong>"아모디핀정 5mg / 하루 1번 / 아침 식후 — 이렇게 등록할까요? 맞으면 '네' 해주세요 😊"</strong><br />
+      + <strong>"혈압약은 매일 같은 시간에 드시는 게 가장 중요해요 🩺"</strong>
     </div>
   </div>
 </section>
