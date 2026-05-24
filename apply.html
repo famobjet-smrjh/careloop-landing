@@ -76,7 +76,7 @@
 
     .radio-group { display: flex; flex-direction: column; gap: 10px; }
     .radio-item {
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: flex-start; gap: 12px;
       border: 1.5px solid var(--gray-200); border-radius: 12px;
       padding: 14px 16px; cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
@@ -84,9 +84,37 @@
     .radio-item:has(input:checked) {
       border-color: var(--blue); background: #EEF2FF;
     }
-    .radio-item input { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0; }
-    .radio-item .radio-label { font-size: 14px; font-weight: 500; }
+    .radio-item input { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+    .radio-item .radio-label { font-size: 14px; font-weight: 700; }
     .radio-item .radio-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+    /* 플랜 가격 표시 */
+    .plan-pricing {
+      display: flex; align-items: center; gap: 6px;
+      margin: 5px 0 3px; flex-wrap: wrap;
+    }
+    .plan-price-now {
+      font-size: 17px; font-weight: 900; color: var(--blue);
+    }
+    .plan-price-orig {
+      font-size: 12px; color: var(--gray-500); font-weight: 400;
+      text-decoration: line-through;
+    }
+    .plan-save-badge {
+      background: #FFF3CD; color: #856404;
+      font-size: 11px; font-weight: 700;
+      border-radius: 5px; padding: 2px 7px;
+    }
+
+    /* 부모님 2번째 섹션 */
+    .parent2-block {
+      border-top: 1px dashed var(--gray-200);
+      padding-top: 20px; margin-top: 4px;
+    }
+    .parent2-title {
+      font-size: 13px; font-weight: 700; color: var(--gray-500);
+      margin-bottom: 16px;
+    }
 
     .divider { border: none; border-top: 1px solid var(--gray-100); margin: 28px 0; }
 
@@ -186,16 +214,26 @@
         <div class="radio-group">
           <label class="radio-item">
             <input type="radio" name="plan" value="베이직 얼리버드" required />
-            <div>
-              <div class="radio-label">🐦 베이직 얼리버드 — 9,900원/월</div>
-              <div class="radio-sub">부모님 두 분 포함 · 건강 체크인 + 복약 알림 + 건강 팁</div>
+            <div style="flex:1;">
+              <div class="radio-label">🐦 베이직 얼리버드</div>
+              <div class="plan-pricing">
+                <span class="plan-price-now">9,900원/월</span>
+                <s class="plan-price-orig">15,900원</s>
+                <span class="plan-save-badge">두 분 포함</span>
+              </div>
+              <div class="radio-sub">건강 체크인 + 복약 알림 + 건강 팁</div>
             </div>
           </label>
           <label class="radio-item">
             <input type="radio" name="plan" value="프리미엄 얼리버드" />
-            <div>
-              <div class="radio-label">🐦 프리미엄 얼리버드 — 14,900원/월</div>
-              <div class="radio-sub">부모님 두 분 포함 · 베이직 + 체크인 미응답 알림</div>
+            <div style="flex:1;">
+              <div class="radio-label">🐦 프리미엄 얼리버드</div>
+              <div class="plan-pricing">
+                <span class="plan-price-now">14,900원/월</span>
+                <s class="plan-price-orig">24,900원</s>
+                <span class="plan-save-badge">두 분 포함</span>
+              </div>
+              <div class="radio-sub">베이직 + 체크인 미응답 알림</div>
             </div>
           </label>
         </div>
@@ -215,6 +253,7 @@
             <input type="radio" name="parentCount" value="한 분만" />
             <div>
               <div class="radio-label">한 분만</div>
+              <div class="radio-sub">한 분 전용 봇으로 케어</div>
             </div>
           </label>
         </div>
@@ -223,14 +262,26 @@
       <hr class="divider" />
       <p class="section-title">부모님 정보</p>
 
+      <!-- 첫 번째 부모님 -->
       <div class="field">
-        <label>부모님 성함 <span class="req">*</span> <span class="hint">예: 어머니 홍길동 / 아버지 홍철수</span></label>
-        <input type="text" name="parentName" placeholder="어머니 홍길동" required />
+        <label id="parent1Label">부모님 성함 <span class="req">*</span></label>
+        <input type="text" name="parent1Name" placeholder="예: 어머니 홍길동" required />
+      </div>
+
+      <!-- 두 번째 부모님 (두 분 선택 시 표시) -->
+      <div id="parent2Section" style="display:none;">
+        <div class="parent2-block">
+          <p class="parent2-title">👤 두 번째 부모님</p>
+          <div class="field">
+            <label>부모님 성함 <span class="req">*</span></label>
+            <input type="text" name="parent2Name" id="parent2Name" placeholder="예: 아버지 홍철수" />
+          </div>
+        </div>
       </div>
 
       <div class="field">
-        <label>건강 관심사 <span class="hint">혈압, 당뇨, 관절 등</span></label>
-        <textarea name="healthConcern" placeholder="예: 혈압이 높으시고 무릎이 가끔 아프세요. 당뇨 전단계라 식단도 신경 쓰고 계세요."></textarea>
+        <label>건강 관심사 <span class="hint" id="healthHint">혈압, 당뇨, 관절 등</span></label>
+        <textarea name="healthConcern" id="healthConcern" placeholder="예: 혈압이 높으시고 무릎이 가끔 아프세요. 당뇨 전단계라 식단도 신경 쓰고 계세요."></textarea>
       </div>
 
       <div class="field">
@@ -303,20 +354,47 @@
 <script>
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoA7ZRsMVazA-zChzRk8MmJyZn0eJxD3H5raBnSgmHcGKCfxZLdt48FjaVFlpm_L6O4g/exec';
 
+  // 부모님 인원 선택 → 필드 동적 전환
+  document.querySelectorAll('input[name="parentCount"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var isTwo = this.value.startsWith('두 분');
+      var parent2Section = document.getElementById('parent2Section');
+      var parent2Name = document.getElementById('parent2Name');
+      var parent1Label = document.getElementById('parent1Label');
+      var healthHint = document.getElementById('healthHint');
+      var healthConcern = document.getElementById('healthConcern');
+
+      if (isTwo) {
+        parent2Section.style.display = 'block';
+        parent2Name.required = true;
+        parent1Label.innerHTML = '첫 번째 부모님 성함 <span class="req">*</span>';
+        healthHint.textContent = '두 분 각각 적어주세요 (예: 어머니 - 혈압 / 아버지 - 당뇨)';
+        healthConcern.placeholder = '어머니 — 혈압이 높으시고 무릎이 아프세요\n아버지 — 당뇨 전단계라 식단 신경 쓰세요';
+      } else {
+        parent2Section.style.display = 'none';
+        parent2Name.required = false;
+        parent1Label.innerHTML = '부모님 성함 <span class="req">*</span>';
+        healthHint.textContent = '혈압, 당뇨, 관절 등';
+        healthConcern.placeholder = '예: 혈압이 높으시고 무릎이 가끔 아프세요. 당뇨 전단계라 식단도 신경 쓰고 계세요.';
+      }
+    });
+  });
+
   document.getElementById('applyForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = document.getElementById('submitBtn');
+    var btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = '전송 중...';
 
-    const data = new FormData(this);
-    const payload = {
+    var data = new FormData(this);
+    var payload = {
       action: 'apply',
       childName: data.get('childName'),
       contact: data.get('contact'),
       plan: data.get('plan'),
       parentCount: data.get('parentCount'),
-      parentName: data.get('parentName'),
+      parent1Name: data.get('parent1Name'),
+      parent2Name: data.get('parent2Name') || '',
       healthConcern: data.get('healthConcern'),
       medication: data.get('medication'),
       request: data.get('request'),
