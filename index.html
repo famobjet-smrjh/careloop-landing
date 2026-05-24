@@ -273,6 +273,8 @@
       border-radius: 24px;
       padding: 36px 32px;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .plan-card.featured {
       border-color: var(--blue);
@@ -293,7 +295,7 @@
     }
     .plan-price span { font-size: 16px; font-weight: 500; color: var(--gray-500); }
     .plan-divider { border: none; border-top: 1px solid var(--gray-200); margin: 24px 0; }
-    .plan-features { list-style: none; }
+    .plan-features { list-style: none; flex: 1; }
     .plan-features li {
       font-size: 15px; padding: 7px 0;
       display: flex; align-items: center; gap: 10px;
@@ -303,7 +305,8 @@
     .plan-features li .cross { color: var(--gray-200); font-size: 16px; }
     .plan-cta {
       display: block; width: 100%;
-      margin-top: 28px;
+      margin-top: auto;
+      padding-top: 28px;
       text-align: center;
       padding: 14px;
       border-radius: 100px;
