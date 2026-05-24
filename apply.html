@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>신청하기 — CareLoop AI</title>
-  <meta name="description" content="CareLoop AI 얼리버드 신청 — 부모님 두 분이 9,900원" />
+  <meta name="description" content="CareLoop AI 얼리버드 신청 — 한 분 7,900원 / 두 분 9,900원" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
@@ -60,7 +60,7 @@
     .field label .req { color: var(--blue); margin-left: 2px; }
     .field label .hint { font-size: 12px; color: var(--gray-500); font-weight: 400; margin-left: 6px; }
 
-    .field input, .field textarea, .field select {
+    .field input, .field textarea {
       width: 100%; border: 1.5px solid var(--gray-200);
       border-radius: 12px; padding: 14px 16px;
       font-size: 15px; font-family: inherit;
@@ -68,11 +68,19 @@
       transition: border-color 0.2s;
       outline: none;
     }
-    .field input:focus, .field textarea:focus, .field select:focus {
+    .field input:focus, .field textarea:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(67,97,238,0.1);
     }
     .field textarea { resize: vertical; min-height: 90px; }
+
+    /* 플랜 그룹 */
+    .plan-group { margin-bottom: 12px; }
+    .plan-group-label {
+      font-size: 12px; font-weight: 700; color: var(--gray-500);
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 8px; padding-left: 4px;
+    }
 
     .radio-group { display: flex; flex-direction: column; gap: 10px; }
     .radio-item {
@@ -84,29 +92,35 @@
     .radio-item:has(input:checked) {
       border-color: var(--blue); background: #EEF2FF;
     }
-    .radio-item input { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
-    .radio-item .radio-label { font-size: 14px; font-weight: 700; }
-    .radio-item .radio-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    .radio-item.plan-highlight {
+      border-color: #BBF7D0; background: #F0FDF4;
+    }
+    .radio-item.plan-highlight:has(input:checked) {
+      border-color: var(--blue); background: #EEF2FF;
+    }
+    .radio-item input { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0; margin-top: 3px; }
+    .radio-item .radio-label { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .radio-item .radio-sub { font-size: 12px; color: var(--gray-500); margin-top: 3px; }
 
-    /* 플랜 가격 표시 */
+    /* 가격 표시 */
     .plan-pricing {
       display: flex; align-items: center; gap: 6px;
-      margin: 5px 0 3px; flex-wrap: wrap;
+      margin: 4px 0 2px; flex-wrap: wrap;
     }
-    .plan-price-now {
-      font-size: 17px; font-weight: 900; color: var(--blue);
-    }
-    .plan-price-orig {
-      font-size: 12px; color: var(--gray-500); font-weight: 400;
-      text-decoration: line-through;
-    }
+    .plan-price-now { font-size: 16px; font-weight: 900; color: var(--blue); }
+    .plan-price-orig { font-size: 12px; color: var(--gray-500); font-weight: 400; text-decoration: line-through; }
     .plan-save-badge {
-      background: #FFF3CD; color: #856404;
+      background: #DCFCE7; color: #166534;
       font-size: 11px; font-weight: 700;
       border-radius: 5px; padding: 2px 7px;
     }
+    .plan-rec-badge {
+      background: var(--blue); color: #fff;
+      font-size: 10px; font-weight: 700;
+      border-radius: 4px; padding: 2px 6px;
+    }
 
-    /* 부모님 2번째 섹션 */
+    /* 두 번째 부모님 */
     .parent2-block {
       border-top: 1px dashed var(--gray-200);
       padding-top: 20px; margin-top: 4px;
@@ -117,7 +131,6 @@
     }
 
     .divider { border: none; border-top: 1px solid var(--gray-100); margin: 28px 0; }
-
     .section-title { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
 
     .submit-btn {
@@ -134,12 +147,9 @@
     .notice { font-size: 12px; color: var(--gray-500); text-align: center; margin-top: 16px; line-height: 1.8; }
 
     /* 완료 화면 */
-    .success-screen {
-      display: none; text-align: center; padding: 60px 24px;
-    }
+    .success-screen { display: none; text-align: center; padding: 60px 24px; }
     .success-icon { font-size: 64px; margin-bottom: 24px; }
     .success-screen h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
-    .success-screen p { font-size: 16px; color: var(--gray-500); line-height: 1.8; }
     .pay-box {
       background: #F0FDF4; border: 1.5px solid #BBF7D0;
       border-radius: 16px; padding: 24px 20px; margin: 28px 0;
@@ -188,7 +198,7 @@
 <div class="form-wrap">
 
   <div class="promo-bar">
-    🐦 얼리버드 혜택 · 선착순 100명 · 두 분 포함 9,900원/월
+    🐦 얼리버드 혜택 · 선착순 100명 · 한 분 7,900원 / 두 분 9,900원
   </div>
 
   <!-- 신청 폼 -->
@@ -211,52 +221,63 @@
       <p class="section-title">플랜 선택</p>
 
       <div class="field">
-        <div class="radio-group">
-          <label class="radio-item">
-            <input type="radio" name="plan" value="베이직 얼리버드" required />
-            <div style="flex:1;">
-              <div class="radio-label">🐦 베이직 얼리버드</div>
-              <div class="plan-pricing">
-                <span class="plan-price-now">9,900원/월</span>
-                <s class="plan-price-orig">15,900원</s>
-                <span class="plan-save-badge">두 분 포함</span>
-              </div>
-              <div class="radio-sub">건강 체크인 + 복약 알림 + 건강 팁</div>
-            </div>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="plan" value="프리미엄 얼리버드" />
-            <div style="flex:1;">
-              <div class="radio-label">🐦 프리미엄 얼리버드</div>
-              <div class="plan-pricing">
-                <span class="plan-price-now">14,900원/월</span>
-                <s class="plan-price-orig">24,900원</s>
-                <span class="plan-save-badge">두 분 포함</span>
-              </div>
-              <div class="radio-sub">베이직 + 체크인 미응답 알림</div>
-            </div>
-          </label>
-        </div>
-      </div>
 
-      <div class="field">
-        <label>부모님 인원 <span class="req">*</span></label>
-        <div class="radio-group">
-          <label class="radio-item">
-            <input type="radio" name="parentCount" value="두 분" required />
-            <div>
-              <div class="radio-label">두 분</div>
-              <div class="radio-sub">각각 전용 봇으로 개별 케어</div>
-            </div>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="parentCount" value="한 분" />
-            <div>
-              <div class="radio-label">한 분</div>
-              <div class="radio-sub">어머니 또는 아버지 한 분 케어</div>
-            </div>
-          </label>
+        <!-- 베이직 -->
+        <div class="plan-group">
+          <div class="plan-group-label">베이직 — 건강 체크인 · 복약 알림 · 건강 팁</div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="plan" value="베이직 얼리버드 — 한 분" required />
+              <div style="flex:1;">
+                <div class="radio-label">한 분</div>
+                <div class="plan-pricing">
+                  <span class="plan-price-now">7,900원/월</span>
+                  <s class="plan-price-orig">9,900원</s>
+                </div>
+              </div>
+            </label>
+            <label class="radio-item plan-highlight">
+              <input type="radio" name="plan" value="베이직 얼리버드 — 두 분" />
+              <div style="flex:1;">
+                <div class="radio-label">두 분 <span class="plan-rec-badge">추천</span></div>
+                <div class="plan-pricing">
+                  <span class="plan-price-now">9,900원/월</span>
+                  <s class="plan-price-orig">15,900원</s>
+                  <span class="plan-save-badge">월 2,000원으로 두 배 케어</span>
+                </div>
+              </div>
+            </label>
+          </div>
         </div>
+
+        <!-- 프리미엄 -->
+        <div class="plan-group" style="margin-top:20px;">
+          <div class="plan-group-label">프리미엄 — 베이직 + 체크인 미응답 알림</div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="plan" value="프리미엄 얼리버드 — 한 분" />
+              <div style="flex:1;">
+                <div class="radio-label">한 분</div>
+                <div class="plan-pricing">
+                  <span class="plan-price-now">12,900원/월</span>
+                  <s class="plan-price-orig">14,900원</s>
+                </div>
+              </div>
+            </label>
+            <label class="radio-item plan-highlight">
+              <input type="radio" name="plan" value="프리미엄 얼리버드 — 두 분" />
+              <div style="flex:1;">
+                <div class="radio-label">두 분 <span class="plan-rec-badge">추천</span></div>
+                <div class="plan-pricing">
+                  <span class="plan-price-now">14,900원/월</span>
+                  <s class="plan-price-orig">24,900원</s>
+                  <span class="plan-save-badge">월 2,000원으로 두 배 케어</span>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
       </div>
 
       <hr class="divider" />
@@ -352,12 +373,12 @@
 </div>
 
 <script>
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoA7ZRsMVazA-zChzRk8MmJyZn0eJxD3H5raBnSgmHcGKCfxZLdt48FjaVFlpm_L6O4g/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoA7ZRsMVazA-zChzRk8MmJyZn0eJxD3H5raBnSgmHcGKCfxZLdt48FjaVFlpm_L6O4g/exec';
 
-  // 부모님 인원 선택 → 필드 동적 전환
-  document.querySelectorAll('input[name="parentCount"]').forEach(function(radio) {
+  // 플랜 선택 → 두 분 여부 감지 → parent2 필드 토글
+  document.querySelectorAll('input[name="plan"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
-      var isTwo = this.value.startsWith('두 분');
+      var isTwo = this.value.includes('두 분');
       var parent2Section = document.getElementById('parent2Section');
       var parent2Name = document.getElementById('parent2Name');
       var parent1Label = document.getElementById('parent1Label');
@@ -368,7 +389,7 @@
         parent2Section.style.display = 'block';
         parent2Name.required = true;
         parent1Label.innerHTML = '첫 번째 부모님 성함 <span class="req">*</span>';
-        healthHint.textContent = '두 분 각각 적어주세요 (예: 어머니 - 혈압 / 아버지 - 당뇨)';
+        healthHint.textContent = '두 분 각각 적어주세요 (예: 어머니 — 혈압 / 아버지 — 당뇨)';
         healthConcern.placeholder = '어머니 — 혈압이 높으시고 무릎이 아프세요\n아버지 — 당뇨 전단계라 식단 신경 쓰세요';
       } else {
         parent2Section.style.display = 'none';
@@ -387,12 +408,15 @@
     btn.textContent = '전송 중...';
 
     var data = new FormData(this);
+    var planValue = data.get('plan') || '';
+    var parentCount = planValue.includes('두 분') ? '두 분' : '한 분';
+
     var payload = {
       action: 'apply',
       childName: data.get('childName'),
       contact: data.get('contact'),
-      plan: data.get('plan'),
-      parentCount: data.get('parentCount'),
+      plan: planValue,
+      parentCount: parentCount,
       parent1Name: data.get('parent1Name'),
       parent2Name: data.get('parent2Name') || '',
       healthConcern: data.get('healthConcern'),
