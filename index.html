@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CareLoop AI — 부모님 건강을 카카오톡으로</title>
-  <meta name="description" content="자녀가 설정하고, 부모님이 카카오톡으로 쓰는 AI 건강 케어 서비스. 월 9,900원으로 매일 안부 확인 + 복약 알림 + 건강 팁." />
+  <meta name="description" content="자녀가 설정하고, 부모님이 카카오톡으로 쓰는 AI 건강 케어 서비스. 한 분 7,900원 / 두 분 9,900원으로 매일 안부 확인 + 복약 알림 + 건강 팁." />
   <meta property="og:title" content="CareLoop AI — 부모님 건강을 카카오톡으로" />
   <meta property="og:description" content="치킨 한 마리 값으로 매일 부모님 건강을 AI가 챙겨드려요." />
 
@@ -319,6 +319,22 @@
 
     /* ── TESTIMONIAL ── */
     .testimonial-section { text-align: center; }
+    .testimonial-wrap { position: relative; min-height: 160px; }
+    .testimonial-slide {
+      position: absolute; top: 0; left: 0; right: 0;
+      opacity: 0; transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+    .testimonial-slide.active { opacity: 1; pointer-events: auto; position: relative; }
+    .testimonial-dots {
+      display: flex; justify-content: center; gap: 8px; margin-top: 28px;
+    }
+    .testimonial-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gray-200); cursor: pointer;
+      transition: background 0.3s;
+    }
+    .testimonial-dot.active { background: var(--blue); }
     .testimonial-quote {
       font-size: clamp(20px, 3vw, 28px);
       font-weight: 700;
@@ -427,7 +443,7 @@
   </p>
   <div class="hero-ctas">
     <a href="apply.html" target="_blank">
-      <button class="btn-primary">이렇게 효도해볼게요 — 월 9,900원</button>
+      <button class="btn-primary">이렇게 효도해볼게요 — 월 7,900원~</button>
     </a>
     <a href="#how">
       <button class="btn-secondary">어떻게 작동하나요?</button>
@@ -567,16 +583,17 @@
 <section class="pricing-section" id="pricing">
   <div class="container">
     <p class="section-label">🐦 얼리버드 혜택 — 선착순 100명</p>
-    <h2 class="section-title">지금 신청하면 두 분이 9,900원</h2>
+    <h2 class="section-title">한 분 7,900원 · 두 분 9,900원</h2>
     <p class="section-sub">얼리버드 혜택가입니다. 100명 마감 후 자동으로 정상가로 전환돼요.<br />각자 전용 봇 · 개별 카카오 케어 · 언제든 해지 가능.</p>
 
     <div class="pricing-grid">
       <!-- 한 분 -->
       <div class="plan-card">
+        <div class="plan-badge" style="background:#EEF2FF;color:var(--blue);">🐦 얼리버드 혜택</div>
         <p class="plan-name">베이직 — 한 분</p>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:12px;">정상가</p>
-        <p class="plan-price">9,900<span>원 / 월</span></p>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">&nbsp;</p>
+        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 9,900원 / 월</p>
+        <p class="plan-price">7,900<span>원 / 월</span></p>
+        <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:16px;">⚡ 지금만 이 가격 · 선착순 100명</p>
         <hr class="plan-divider" />
         <ul class="plan-features">
           <li><span class="check">✓</span> 부모님 한 분 전용 봇</li>
@@ -595,10 +612,10 @@
       <div class="plan-card featured">
         <div class="plan-badge">🐦 얼리버드 혜택</div>
         <p class="plan-name">베이직 — 두 분 포함</p>
-        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 19,800원 / 월</p>
+        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 15,900원 / 월</p>
         <p class="plan-price">9,900<span>원 / 월</span></p>
         <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:4px;">⚡ 지금만 이 가격 · 선착순 100명</p>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:12px;">한 분과 같은 가격으로 두 분 케어 ✓</p>
+        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:12px;">월 2,000원만 더 → 두 분 함께 케어 ✓</p>
         <hr class="plan-divider" />
         <ul class="plan-features">
           <li><span class="check">✓</span> 부모님 <strong>두 분 전용 봇</strong> 각각 제공</li>
@@ -640,12 +657,51 @@
 <!-- TESTIMONIAL -->
 <section class="testimonial-section">
   <div class="container">
-    <p class="testimonial-quote">
-      어머니한테 전화 못 한 날도<br />
-      주간 리포트 보면서 '잘 계시구나' 하고 안심했어요.<br />
-      그게 생각보다 되게 위로가 됐어요.
-    </p>
-    <p class="testimonial-author">— 44세 직장인, 서울 거주 · 베타 테스터</p>
+    <div class="testimonial-wrap">
+
+      <div class="testimonial-slide active">
+        <p class="testimonial-quote">
+          어머니한테 전화 못 한 날도<br />
+          주간 리포트 보면서 '잘 계시구나' 하고 안심했어요.<br />
+          그게 생각보다 되게 위로가 됐어요.
+        </p>
+        <p class="testimonial-author">— 44세 직장인, 서울 거주 · 베타 테스터</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          아버지가 혈압약을 자꾸 깜빡하셨는데,<br />
+          봇이 알림 보내고 나서 '오늘도 먹었다'고 답장이 오더라고요.<br />
+          그 답장 하나가 하루를 편하게 해줬어요.
+        </p>
+        <p class="testimonial-author">— 47세 자영업, 경기도 거주 · 베타 테스터</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          카카오톡 잘 못 하실 줄 알았는데,<br />
+          봇이 먼저 말 걸어주니까 오히려 더 잘 쓰시더라고요.<br />
+          자식한테 연락하기 어려우셨던 거였나봐요.
+        </p>
+        <p class="testimonial-author">— 39세 직장인, 대전 거주 · 베타 테스터</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          매일 전화 못 드려서 늘 미안했는데,<br />
+          봇이 대신 인사해드리니까 그 죄책감이 좀 줄었어요.<br />
+          이상하게 들릴 수 있는데, 진짜로 그래요.
+        </p>
+        <p class="testimonial-author">— 43세 회사원, 서울 거주 · 베타 테스터</p>
+      </div>
+
+    </div>
+    <div class="testimonial-dots">
+      <div class="testimonial-dot active" onclick="goSlide(0)"></div>
+      <div class="testimonial-dot" onclick="goSlide(1)"></div>
+      <div class="testimonial-dot" onclick="goSlide(2)"></div>
+      <div class="testimonial-dot" onclick="goSlide(3)"></div>
+    </div>
   </div>
 </section>
 
@@ -705,7 +761,7 @@
 <section class="final-cta">
   <div class="container">
     <h2>오늘 전화 못 해도 괜찮아요.<br />내 마음은 매일 전해지니까요.</h2>
-    <p>지금 시작하면 오늘부터 AI가 부모님께 먼저 인사합니다.<br />자녀는 주간 리포트로 확인만 — 얼리버드 월 9,900원.</p>
+    <p>지금 시작하면 오늘부터 AI가 부모님께 먼저 인사합니다.<br />자녀는 주간 리포트로 확인만 — 얼리버드 한 분 7,900원 / 두 분 9,900원.</p>
     <a href="apply.html" target="_blank">
       <button class="btn-white">이렇게 효도해볼게요 →</button>
     </a>
@@ -743,6 +799,24 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Testimonial rotation
+  var slides = document.querySelectorAll('.testimonial-slide');
+  var dots = document.querySelectorAll('.testimonial-dot');
+  var current = 0;
+  var timer;
+
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(function() { goSlide(current + 1); }, 5000);
+  }
+
+  timer = setInterval(function() { goSlide(current + 1); }, 5000);
 </script>
 
 </body>
