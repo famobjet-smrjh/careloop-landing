@@ -295,7 +295,8 @@
     }
     .plan-price span { font-size: 16px; font-weight: 500; color: var(--gray-500); }
     .plan-divider { border: none; border-top: 1px solid var(--gray-200); margin: 24px 0; }
-    .plan-features { list-style: none; flex: 1; }
+    .plan-head { min-height: 150px; }
+    .plan-features { list-style: none; flex: 1; padding-bottom: 12px; }
     .plan-features li {
       font-size: 15px; padding: 7px 0;
       display: flex; align-items: center; gap: 10px;
@@ -516,7 +517,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>자녀가 5분 설정</h3>
-        <p>이름·건강 상태만 입력하면 끝. 약은 부모님이 사진으로!</p>
+        <p>이름·건강 상태만 입력하면 끝.<br />약봉투 사진 한 장으로 자동 등록.</p>
         <div class="step-detail">
           ✅ 이름 & 건강 관심사<br />
           📷 약봉투 사진 → AI 자동 등록<br />
@@ -598,10 +599,12 @@
       <!-- 한 분 -->
       <div class="plan-card">
         <div class="plan-badge" style="background:#EEF2FF;color:var(--blue);">🐦 얼리버드 혜택</div>
-        <p class="plan-name">베이직 — 한 분</p>
-        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 9,900원 / 월</p>
-        <p class="plan-price">7,900<span>원 / 월</span></p>
-        <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:16px;">⚡ 지금만 이 가격 · 선착순 100명</p>
+        <div class="plan-head">
+          <p class="plan-name">베이직 — 한 분</p>
+          <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 9,900원 / 월</p>
+          <p class="plan-price">7,900<span>원 / 월</span></p>
+          <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:0;">⚡ 지금만 이 가격 · 선착순 100명</p>
+        </div>
         <hr class="plan-divider" />
         <ul class="plan-features">
           <li><span class="check">✓</span> 부모님 한 분 전용 봇</li>
@@ -619,11 +622,13 @@
       <!-- 얼리버드 두 분 -->
       <div class="plan-card featured">
         <div class="plan-badge">🐦 얼리버드 혜택</div>
-        <p class="plan-name">베이직 — 두 분 포함</p>
-        <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 15,900원 / 월</p>
-        <p class="plan-price">9,900<span>원 / 월</span></p>
-        <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:4px;">⚡ 지금만 이 가격 · 선착순 100명</p>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:12px;">월 2,000원만 더 → 두 분 함께 케어 ✓</p>
+        <div class="plan-head">
+          <p class="plan-name">베이직 — 두 분 포함</p>
+          <p style="font-size:14px;color:var(--gray-500);text-decoration:line-through;margin-bottom:4px;">정상가 15,900원 / 월</p>
+          <p class="plan-price">9,900<span>원 / 월</span></p>
+          <p style="font-size:13px;color:#FB8500;font-weight:700;margin-bottom:4px;">⚡ 지금만 이 가격 · 선착순 100명</p>
+          <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:0;">월 2,000원만 더 → 두 분 함께 케어 ✓</p>
+        </div>
         <hr class="plan-divider" />
         <ul class="plan-features">
           <li><span class="check">✓</span> <strong>두 분 전용 봇</strong> 각각 제공</li>
@@ -641,10 +646,12 @@
       <!-- 프리미엄 준비중 -->
       <div class="plan-card" style="opacity:0.55; filter:grayscale(0.3);">
         <div class="plan-badge" style="background:var(--gray-500);color:#fff;">🔧 준비중</div>
-        <p class="plan-name">프리미엄 — 두 분 포함</p>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:4px;">&nbsp;</p>
-        <p class="plan-price" style="color:var(--gray-500);">14,900<span>원 / 월</span></p>
-        <p style="font-size:13px;color:var(--gray-500);font-weight:700;margin-bottom:16px;">곧 오픈합니다</p>
+        <div class="plan-head">
+          <p class="plan-name">프리미엄 — 두 분 포함</p>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:4px;">&nbsp;</p>
+          <p class="plan-price" style="color:var(--gray-500);">14,900<span>원 / 월</span></p>
+          <p style="font-size:13px;color:var(--gray-500);font-weight:700;margin-bottom:0;">곧 오픈합니다</p>
+        </div>
         <hr class="plan-divider" />
         <ul class="plan-features">
           <li><span class="check">✓</span> 베이직 전체 포함</li>
@@ -680,7 +687,7 @@
       <div class="testimonial-slide">
         <p class="testimonial-quote">
           아버지가 혈압약을 자꾸 깜빡하셨는데,<br />
-          봇이 알림 보내고 나서 '오늘도 먹었다'고 답장이 오더라고요.<br />
+          봇이 알림 보내고 나서 '오늘도 먹었다'고<br />답장이 오더라고요.<br />
           그 답장 하나가 하루를 편하게 해줬어요.
         </p>
         <p class="testimonial-author">— 47세 자영업, 경기도 거주 · 베타 테스터</p>
@@ -770,7 +777,7 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2>오늘 전화 못 해도 괜찮아요.<br />내 마음은 매일 전해지니까요.</h2>
+    <h2>오늘 전화 못 해도 괜찮아요.<br />내 마음, 매일 전해드릴게요.</h2>
     <p>지금 시작하면 오늘부터 AI가 부모님께 먼저 인사합니다.<br />자녀는 주간 리포트로 확인만 — 얼리버드 한 분 7,900원 / 두 분 9,900원.</p>
     <a href="apply.html" target="_blank">
       <button class="btn-white">이렇게 효도해볼게요 →</button>
