@@ -491,20 +491,58 @@
 <!-- BRIDGE -->
 <section style="background:#fff;text-align:center;padding:64px 24px;">
   <div class="container" style="max-width:680px;">
-    <p style="font-size:clamp(22px,3.5vw,32px);font-weight:900;line-height:1.6;color:var(--gray-900);margin-bottom:20px;">
-      "자녀분이 신경 써주셔서<br />정말 좋아요 😊"<br />
-      <span style="font-size:0.6em;font-weight:400;color:var(--gray-500);">— 부모님이 AI 봇에게 하신 말씀</span>
-    </p>
-    <p style="font-size:17px;color:var(--gray-500);line-height:1.8;margin-bottom:32px;">
-      바빠서 못 챙기는 게 아니에요.<br />
-      챙기는 방식이 달라진 거예요.<br />
-      <strong style="color:var(--gray-700);">내 마음이 매일 부모님께 닿을 수 있도록.</strong>
-    </p>
+    <div style="overflow:hidden;margin-bottom:32px;" id="bridge-wrap">
+      <div id="bridge-track" style="display:flex;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);">
+
+        <!-- Slide 1: 부모님 후기 -->
+        <div style="min-width:100%;flex-shrink:0;">
+          <p style="font-size:clamp(22px,3.5vw,32px);font-weight:900;line-height:1.6;color:var(--gray-900);margin-bottom:16px;">
+            "봇이 매일 안부 물어봐줘서,<br />혼자 있어도 외롭지 않아요."
+          </p>
+          <p style="font-size:15px;color:var(--gray-500);">— 69세 어머니 · 베타 테스터</p>
+        </div>
+
+        <!-- Slide 2: 브랜드 카피 -->
+        <div style="min-width:100%;flex-shrink:0;">
+          <p style="font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.8;color:var(--gray-700);margin-bottom:16px;">
+            바빠서 못 챙긴 게 아니에요.<br />
+            챙기는 방식이 달라진 거예요.<br />
+            <strong style="color:var(--gray-900);">내 마음이 매일 부모님께 닿도록.</strong>
+          </p>
+          <p style="font-size:15px;color:var(--gray-400);">— CareLoop AI</p>
+        </div>
+
+      </div>
+      <!-- dots -->
+      <div style="margin-top:20px;display:flex;justify-content:center;gap:8px;" id="bridge-dots">
+        <div onclick="goBridge(0)" style="width:8px;height:8px;border-radius:50%;background:var(--blue);cursor:pointer;transition:background 0.3s;"></div>
+        <div onclick="goBridge(1)" style="width:8px;height:8px;border-radius:50%;background:var(--gray-200);cursor:pointer;transition:background 0.3s;"></div>
+      </div>
+    </div>
     <a href="apply.html" target="_blank">
       <button class="btn-primary">이렇게 효도해볼게요 →</button>
     </a>
   </div>
 </section>
+<script>
+(function() {
+  var bt = document.getElementById('bridge-track');
+  var dots = document.getElementById('bridge-dots').children;
+  var cur = 0;
+  var timer;
+  function goBridge(n) {
+    cur = n % 2;
+    bt.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].style.background = i === cur ? 'var(--blue)' : 'var(--gray-200)';
+    }
+    clearInterval(timer);
+    timer = setInterval(function() { goBridge(cur + 1); }, 4500);
+  }
+  window.goBridge = goBridge;
+  timer = setInterval(function() { goBridge(cur + 1); }, 4500);
+})();
+</script>
 
 <!-- HOW IT WORKS -->
 <section id="how">
